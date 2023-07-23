@@ -1,0 +1,10 @@
+networks:
+    socks5:
+        driver: bridge
+services:
+    socks5:
+        image: proxymurder/socks5:latest
+        networks:
+            - socks5
+        ports:
+            - 9050
