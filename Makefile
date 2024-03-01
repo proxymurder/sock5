@@ -1,10 +1,16 @@
-all: image-socks5 local
+NAME=sock5
+IMAGE=proxymurder/${NAME}:latest
 
-image-socks5: 
-	docker build -t proxymurder/socks5:latest ./
+all:
 
-local:
-	docker compose up -d socks5
+image: 
+	docker build -t ${IMAGE} ./
+
+compose:
+	docker compose up -d ${NAME}
+
+sh:
+	docker compose ${NAME} sh
 
 rollback:
 	docker compose down

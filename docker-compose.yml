@@ -1,10 +1,10 @@
 networks:
-    socks5:
+    tor:
         driver: bridge
 services:
     socks5:
         image: proxymurder/socks5:latest
         networks:
-            - socks5
-        ports:
-            - 9050
+          - tor
+        # ports:
+        #     - 9050

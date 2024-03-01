@@ -1,12 +1,15 @@
 FROM alpine:latest
 
 USER root
+
 RUN apk update \
-    && apk add tor
+    && apk add \
+    tor
 
-COPY torrc etc/tor/torrc
+RUN echo "SocksPort 0.0.0.0:9050" > /etc/tor/torrc
 
-RUN chown -R tor etc/tor
+RUN chown -R tor /etc/tor
+
 USER tor
 
-CMD ["tor", "-f", "etc/tor/torrc"]
+CMD ["tor", "-f", "/etc/tor/torrc"]
